@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    // Validate Email Syntax
+    
   },
   thoughts: [
     {
@@ -40,12 +40,12 @@ const ThoughtSchema = new Schema({
   thoughtText: {
     type: String,
     required: true,
-    // Validate Length
+    
   },
   createdAt: {
     type: Date,
     default: Date.now,
-    // Use getter to format date
+    
   },
   username: {
     type: String,
@@ -70,7 +70,7 @@ const ReactionSchema = new Schema({
   reactionBody: {
     type: String,
     required: true,
-    // Validate Length
+    
   },
   username: {
     type: String,
@@ -79,7 +79,7 @@ const ReactionSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    // Use getter to format date
+    
   }
 });
 
