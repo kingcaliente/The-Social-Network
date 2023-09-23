@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-// const { User, Thought } = require('./models');
+const { User } = require('../../models');
+
+
 
 router.get('/api/users', async (req, res) => {
   const users = await User.find({});
@@ -17,6 +19,6 @@ router.post('/api/users', async (req, res) => {
   res.json(user);
 });
 
-// And so on for the other routes
+
 
 module.exports = router;
