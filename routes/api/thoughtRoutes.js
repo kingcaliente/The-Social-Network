@@ -6,7 +6,7 @@ const {
   deleteThought,
   addAssignment,
   removeAssignment,
-} = require('../../controllers/Though-Controller');
+} = require('../../controllers/Thought-Controller');
 
 
 router.route('/').get(getThoughts).post(createThought);
