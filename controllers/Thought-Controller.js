@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Thought = require('../models/Thought');
 
-
 router.get('/', async (req, res) => {
   try {
     const thoughts = await Thought.find();
@@ -12,16 +11,14 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.get('/:id', getThought, (req, res) => {
   res.json(res.thought);
 });
 
-
 router.post('/', async (req, res) => {
   const thought = new Thought({
-    title: req.body.title,
-    content: req.body.content
+    thoughtText: req.body.thoughtText, 
+    username: req.body.username, 
   });
 
   try {
@@ -32,10 +29,9 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 router.patch('/:id', getThought, async (req, res) => {
-  if (req.body.title) res.thought.title = req.body.title;
-  if (req.body.content) res.thought.content = req.body.content;
+  if (req.body.thoughtText) res.thought.thoughtText = req.body.thoughtText; 
+  if (req.body.username) res.thought.username = req.body.username; 
 
   try {
     const updatedThought = await res.thought.save();
@@ -44,7 +40,6 @@ router.patch('/:id', getThought, async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
-
 
 router.delete('/:id', getThought, async (req, res) => {
   try {

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const ThoughtSchema = new mongoose.Schema({
+const ThoughtSchema = new Schema({
   thoughtText: {
     type: String,
     required: true,
@@ -9,20 +9,21 @@ const ThoughtSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    // get: timestamp => dateFormat(timestamp)
   },
   username: {
     type: String,
     required: true
   },
-  reactions: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Reaction'
-    }
-  ]
+//   reactions: [ReactionSchema]
+},
+{
+  toJSON: {
+    getters: true
+  }
 });
 
-const Thought = mongoose.model('Thought', ThoughtSchema);
+const Thought = model('Thought', ThoughtSchema);
 
 module.exports = Thought;
